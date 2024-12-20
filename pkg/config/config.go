@@ -14,6 +14,7 @@ type Config struct {
 	InstanceName      string            `yaml:"instanceName" json:"instanceName"`
 	CustomApps        []CustomApp       `yaml:"customApps" json:"customApps"`
 	CRDEnabled        bool              `yaml:"crdEnabled" json:"crdEnabled"`
+	DefaultProtocol   string            `yaml:"defaultProtocol" json:"defaultProtocol"`
 }
 
 // CustomApp struct for specifying apps that are not generated using ingresses
@@ -24,6 +25,7 @@ type CustomApp struct {
 	Group             string            `yaml:"group" json:"group"`
 	NetworkRestricted bool              `yaml:"networkRestricted" json:"networkRestricted"`
 	Properties        map[string]string `yaml:"properties" json:"properties"`
+	Protocol          string            `yaml:"protocol" json:"protocol"`
 }
 
 // NamespaceSelector struct for selecting namespaces based on labels and names

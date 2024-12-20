@@ -38,9 +38,13 @@ func (al *List) Get() ([]forecastle.App, error) {
 
 func convertCustomAppsToForecastleApps(customApps []config.CustomApp) (apps []forecastle.App) {
 	for _, customApp := range customApps {
+		protocol := customApp.Protocol
+		if protocol == "" {
+			protocol = "http"
+		}
 		apps = append(apps, forecastle.App{
 			Name:              customApp.Name,
-			URL:               customApp.URL,
+			URL:               protocol + "://" + customApp.URL,
 			Icon:              customApp.Icon,
 			Group:             customApp.Group,
 			DiscoverySource:   forecastle.Config,

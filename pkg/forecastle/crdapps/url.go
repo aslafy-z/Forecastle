@@ -16,7 +16,6 @@ import (
 func getURL(clients kube.Clients, forecastleApp v1alpha1.ForecastleApp) (string, error) {
 	if len(forecastleApp.Spec.URL) == 0 {
 		return discoverURLFromRefs(clients, forecastleApp)
-
 	}
 	return forecastleApp.Spec.URL, nil
 }
